@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://kit.fontawesome.com/a22d7f8d82.js" crossorigin="anonymous"></script>
+      <script>
+            tailwind.config = {
+              theme: {
+                extend: {
+                  colors: {
+                    clifford: '#da373d',
+                  }
+                }
+              }
+            }
+      </script>
+</head>
+<body>
+      <header class="bg-amber-100 min-h-screen px-14 " >
+            <div class=" md:flex lg:flex  justify-center items-center gap-10 ">
+                  <div>
+                        <h4 class="text-2xl text-center mb-10">---SALE FEVER---</h4>
+                        <h1 class="text-4xl font-bold text-center">Purchase TK 200 or <br class="hidden md:block">above & get <span class="text-fuchsia-600">20% off</span></h1>
+                        <p class="text-base text-center font-semibold mt-10">Use Promo Code <button class="bg-fuchsia-600 px-4 py-1 text-white font-semibold rounded-lg ">SELL200</button></p>
+                  </div>
+                  <div  class="" >
+                        <img class="w-[400px] h-[400px] md:w-[600px] md:h-[600px]" src="images/Summer 1.png" alt="">
+                  </div>
+            </div>
+      </header>
+      <main class=" bg-green-500 px-2 md:px-14 mt-28">
+            <section class="gap-5  justify-center md:flex md:gap-10 mt-10 bg-sky-200 ">
+                  <div class="mt-5 w-full">
+                        <h2 class="text-3xl font-bold mb-6">Kitchenware</h2>
+                        <!-- first card  -->
+                        <div class=" grid grid-cols-1 md:grid-cols-3 gap-10">
+                              <div onclick="divBtnClick(this)" class=" w-full bg-base-100 shadow-xl p-5">
+                                    <figure class="py-10 bg-slate-200 rounded">
+                                    <img src="/images/prod1.png" alt="prod1" class="rounded" />
+                                    </figure>
+                                    <p class="text-center mt-5"><i class="fa-solid fa-star text-amber-300"></i>
+                                          <i class="fa-solid fa-star text-amber-300"></i>
+                                          <i class="fa-solid fa-star text-amber-300"></i>
+                                          <i class="fa-regular fa-star text-amber-300"></i>
+                                          <i class="fa-regular fa-star text-amber-300"></i>
+                                    </p>
+                                    <h2 class=" text-center mt-5 text-1xl font-bold">K. Accessories</h2>
+                                    <p class="text-center mt-5">39.00 tk</p>
+                              </div> 
+                              <div onclick="divBtnClick(this)" class="w-full bg-base-100 shadow-xl p-5">
+                                    <figure class="py-10 bg-slate-200 rounded">
+                                    <img src="/images/prod2.png" alt="prod1" class="rounded" />
+                                    </figure>
+                                    <div class="card-body items-center text-center">
+                                          <p><i class="fa-solid fa-star text-amber-300"></i>
+                                                <i class="fa-solid fa-star text-amber-300"></i>
+                                                <i class="fa-solid fa-star text-amber-300"></i>
+                                                <i class="fa-regular fa-star text-amber-300"></i>
+                                                <i class="fa-regular fa-star text-amber-300"></i>
+                                          </p>
+                                    <h2 class=" text-center">K. Accessories</h2>
+                                    <p> <span>39.00</span> TK</p>
+                                    </div>
+                              </div> 
+                              <div onclick="divBtnClick(this)" class=" w-full bg-base-100 shadow-xl p-5">
+                                    <figure class="py-10 bg-slate-200 rounded">
+                                    <img src="/images/prod3.png" alt="prod1" class="rounded" />
+                                    </figure>
+                                    <div class="card-body items-center text-center">
+                                          <p><i class="fa-solid fa-star text-amber-300"></i>
+                                                <i class="fa-solid fa-star text-amber-300"></i>
+                                                <i class="fa-solid fa-star text-amber-300"></i>
+                                                <i class="fa-regular fa-star text-amber-300"></i>
+                                                <i class="fa-regular fa-star text-amber-300"></i>
+                                          </p>
+                                    <h2 class=" text-center">K. Accessories</h2>
+                                    <p> <span>39.00</span> TK</p>
+                                    </div>
+                              </div> 
+                              <div onclick="divBtnClick(this)" class="w-full bg-base-100 shadow-xl p-5">
+                                    <figure class="py-10 bg-slate-200 rounded">
+                                    <img src="/images/prod1.png" alt="prod1" class="rounded" />
+                                    </figure>
+                                    <div class="card-body items-center text-center">
+                                    <h2 class=" text-center ">K. Accessories</h2>
+                                    <p> <span>39.00</span> TK</p>
+                                    </div>
+                              </div> 
+                        </div>
+                  </div>
+                  <div class="bg-amber-300 mt-5 p-5">
+                        <div class="bg-white p-5 rounded">
+                              <h2 class="text-1xl font-semibold">Have coupon?</h2>
+                              <div class="flex items-center justify-center ">
+                                    <div class="flex border-2 border-gray-200 rounded">
+                                        <input type="text" class="px-4 py-2 w-24" placeholder="Search...">
+                                        <button class="px-2 text-white bg-gray-600 border-l ">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
+                        <div>
+                              <div id="selected-items"></div>
+                              <div>
+                                    <h3 class="text-1xl font-semibold ">Total price:<span id="total-price">00.00</span> TK</h3>
+                                    <h3 class="text-1xl font-semibold ">Discount: 257.00 TK</h3>
+                                    <h3 class="text-1xl font-semibold ">Total: 257.00 TK</h3>
+                              </div>
+                              <button class="bg-fuchsia-600 px-4 py-1 text-white font-semibold rounded-lg mt-5">Make Purchase</button>
+                        </div>
+                  </div>
+            </section>
+      </main>
+      <script>
+            let total = 0;
+            function divBtnClick(target){
+                  const selectedItemsContainer =document.getElementById('selected-items')
+                  const itemName =target.childNodes[5].innerText;
+                  // console.log(itemName);
+                   const li =document.createElement('li');
+                   li.innerText = itemName;
+                   selectedItemsContainer.appendChild(li)
+                   const price =target.childNodes[7].innerText.split(" ")[0];
+                  total =parseInt(total) + parseInt(price);
+                  document.getElementById('total-price').innerText=total
+            }
+      </script>
+</body>
+</html>
