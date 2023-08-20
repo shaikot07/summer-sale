@@ -29,6 +29,7 @@
 
 <body>
       <header class="bg-amber-100 min-h-screen px-16 ">
+            <!-- banner start  -->
             <div class=" md:flex lg:flex  justify-center items-center gap-10 ">
                   <div>
                         <h4 class="text-2xl text-center mb-10">---SALE FEVER---</h4>
@@ -43,7 +44,8 @@
                   </div>
             </div>
       </header>
-      <main class=" bg-slate-100 px-2 md:px-24 ">
+      <!-- card start  -->
+      <main class=" bg-slate-100 sm:px-8 lg:px-28 ">
             <section class="gap-5  justify-center  md:flex  md:gap-10 mt-10 bg-slate-100 ">
                   <div class="mt-5 w-full">
                         <h2 class="text-3xl font-bold mb-6">Kitchenware</h2>
@@ -93,9 +95,9 @@
 
                         </div>
                         <!-- second row  -->
-                        <div class="mt-10 mb-10 w-full">
+                        <div class="mt-10 mb-10 w-full ">
                               <h2 class="text-3xl font-bold mb-6">Sportswear</h2>
-                              <div class=" grid grid-cols-1 md:grid-cols-3 gap-10">
+                              <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                                     <!-- first card  -->
                                     <div onclick="divBtnClick(this)" class=" w-full bg-base-100 shadow-xl p-5">
                                           <figure class="py-10 bg-slate-200 rounded">
@@ -143,9 +145,9 @@
                         </div>
 
                   </div>
-                  <!-- side bar  -->
+                  <!-- side bar start  -->
 
-                  <div class="bg-amber-300 mt-20 p-5 h-[500px]">
+                  <div class="bg-slate-100 mt-16 p-5 h-[400px]">
                         <div class="bg-white p-5 rounded mb-5">
                               <h2 class="text-1xl font-semibold mb-2">Have coupon?</h2>
                               <div class="flex items-center justify-center ">
@@ -159,10 +161,12 @@
                                     </div>
                               </div>
                         </div>
-                        <div>
+                        <!-- selected iteam show and discount start -->
+                        <div >
                               <ul id="selected-items" class="bg-white p-5 max-h-[120px] overflow-scroll list-decimal">
                               </ul>
-                              <div class="mt-5 bg-white p-3">
+                              <div class=" bg-white p-3">
+                                    <hr class="mb-2">
                                     <h3 class="text-1xl font-semibold ">Total price:<span id="total-price">00.00</span>
                                           TK</h3>
                                     <h3 class="text-1xl font-semibold ">Discount: <span
@@ -171,10 +175,12 @@
                                           TK</h3>
                               </div>
 
-                              <!-- demo modal  -->
-                              <!-- Open the modal using ID.showModal() method -->
-                              <button id="purchase-btn" disabled="true"
-                                    class="bg-slate-300 px-4 py-1 text-white font-semibold rounded-lg mt-5"
+                              <!-- demo modal start  -->
+                              
+                              <div class="bg-white p-3">
+                                    <hr>
+                                    <button id="purchase-btn" disabled="true"
+                                    class="bg-slate-300 px-4 py-1 text-white font-semibold rounded-lg mt-5 w-full"
                                     onclick="my_modal_1.showModal()">Make
                                     Purchase</button>
                               <dialog id="my_modal_1" class="modal">
@@ -182,70 +188,21 @@
                                           <img class="mx-auto" src="images/congo.png" alt="">
                                           <h3 class="font-bold text-3xl text-center">Congratulations</h3>
                                           <p class="py-1 text-center">Your Purchase the product</p>
-                                          <div class="modal-action">
-                                                <!-- if there is a button in form, it will close the modal -->
-                                                <button id="go-to-home" class="btn mx-auto bg-fuchsia-500 text-white font bold">Go Home</button>
+                                          <div class="modal-action ">
+                                                
+                                                <button id="go-to-home" class="btn mx-auto bg-fuchsia-500 text-white font bold ">Go Home</button>
                                           </div>
                                     </form>
                               </dialog>
-                              <!-- demo modal  -->
+                              </div>
+                              <!-- demo modal end  -->
 
                         </div>
                   </div>
             </section>
 
       </main>
-      <script>
-            const totalPrice = document.getElementById('total-price')
-            const discountAmount = document.getElementById('discount-amount')
-            const discountPrices = document.getElementById('discount-prices')
-            const couponApplyBtn = document.getElementById('apply-btn')
-            const purchaseBtn = document.getElementById('purchase-btn')
-            const couponCodeInput = document.getElementById('coupon-code-input')
-
-            let total = 0;
-
-            function divBtnClick(target) {
-                  const selectedItemsContainer = document.getElementById('selected-items')
-                  const itemName = target.childNodes[5].innerText;
-                  // console.log(itemName);
-                  const li = document.createElement('li');
-                  li.innerText = itemName;
-                  selectedItemsContainer.appendChild(li)
-                  const price = target.childNodes[7].innerText.split(" ")[0];
-                  total = (parseFloat(total) + parseFloat(price)).toFixed(2);
-                  totalPrice.innerText = total
-                  discountPrices.innerText = total
-                  // btn disabled part 
-                  purchaseBtn.disabled = total > 0 ? false : true
-                  purchaseBtn.style.backgroundColor = total > 0 ? '#C026D3' : ''
-                  couponApplyBtn.disabled = total < 200 ? true : false
-                  couponApplyBtn.style.backgroundColor = total < 200 ? '' : '#C026D3'
-            }
-            // calculation main part 
-
-            couponApplyBtn.addEventListener('click', function () {
-                  if (couponCodeInput.value === 'SELL200') {
-                        couponApplyBtn.disabled = true
-                        couponApplyBtn.style.backgroundColor = '#A6A6A6'
-                        couponCodeInput.value = ''
-
-                        const discountAmountT = ((20 / 100) * total).toFixed(2);
-                        total -= discountAmountT
-                        discountAmount.innerText = discountAmountT
-                        discountPrices.innerText = total.toFixed(2)
-                  }
-                  else{
-                        alert('invalid coupon')
-                  }
-            })
-
-            // model goto home button 
-            document.getElementById('go-to-home').addEventListener('click', function(){
-                  // console.log('hello model');
-                  location.reload('index.html');
-            })
-      </script>
+      <script src="js/calculation.js"></script>
 </body>
 
 </html>
